@@ -38,62 +38,64 @@ const FlowDiagram = () => {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <div ref={containerRef} className="relative py-12">
+    <div ref={containerRef} className="relative py-16 lg:py-12">
       {/* Flow container */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0 relative">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-0 relative">
         {flowSteps.map((step, index) => (
-          <div key={step.label} className="flex items-center">
-            {/* Node */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: index * 0.15, duration: 0.5, ease: "easeOut" }}
-              className="relative group"
-            >
-              {/* Outer glow ring */}
+          <div key={step.label} className="flex flex-col lg:flex-row items-center">
+            {/* Node with label */}
+            <div className="flex flex-col items-center">
               <motion.div
-                className="absolute -inset-3 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                animate={isInView ? { scale: [1, 1.2, 1] } : {}}
-                transition={{
-                  delay: index * 0.15 + 0.5,
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: index * 0.15, duration: 0.5, ease: "easeOut" }}
+                className="relative group"
+              >
+                {/* Outer glow ring */}
+                <motion.div
+                  className="absolute -inset-3 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  animate={isInView ? { scale: [1, 1.2, 1] } : {}}
+                  transition={{
+                    delay: index * 0.15 + 0.5,
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
 
-              {/* Node circle */}
-              <div className="relative w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-border bg-card flex items-center justify-center group-hover:border-primary/50 transition-colors duration-300">
-                {/* Inner glow */}
-                <div className="absolute inset-2 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300" />
-                <step.icon className="w-6 h-6 lg:w-7 lg:h-7 text-primary relative z-10" />
+                {/* Node circle */}
+                <div className="relative w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-border bg-card flex items-center justify-center group-hover:border-primary/50 transition-colors duration-300">
+                  {/* Inner glow */}
+                  <div className="absolute inset-2 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300" />
+                  <step.icon className="w-6 h-6 lg:w-7 lg:h-7 text-primary relative z-10" />
 
-                {/* Active pulse for first node */}
-                {index === 0 && (
-                  <motion.div
-                    className="absolute inset-0 rounded-full border-2 border-primary/40"
-                    animate={{ scale: [1, 1.3], opacity: [0.6, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-                  />
-                )}
-              </div>
+                  {/* Active pulse for first node */}
+                  {index === 0 && (
+                    <motion.div
+                      className="absolute inset-0 rounded-full border-2 border-primary/40"
+                      animate={{ scale: [1, 1.3], opacity: [0.6, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                    />
+                  )}
+                </div>
+              </motion.div>
 
-              {/* Label */}
+              {/* Label - properly positioned below node */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.15 + 0.2, duration: 0.4 }}
-                className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap"
+                className="mt-4 text-center"
               >
-                <span className="text-xs text-muted-foreground font-medium">
+                <span className="text-xs text-muted-foreground font-medium whitespace-nowrap">
                   {step.label}
                 </span>
               </motion.div>
-            </motion.div>
+            </div>
 
-            {/* Connector line */}
+            {/* Connector line - Desktop (horizontal) */}
             {index < flowSteps.length - 1 && (
-              <div className="hidden lg:block relative w-16 xl:w-24 h-px mx-2">
+              <div className="hidden lg:flex items-center relative w-12 xl:w-20 h-px mx-3 self-start mt-10">
                 {/* Base line */}
                 <motion.div
                   initial={{ scaleX: 0 }}
@@ -133,14 +135,21 @@ const FlowDiagram = () => {
               </div>
             )}
 
-            {/* Mobile connector (vertical) */}
+            {/* Mobile connector (vertical) - between items */}
             {index < flowSteps.length - 1 && (
-              <div className="lg:hidden relative h-8 w-px my-2">
+              <div className="lg:hidden relative h-6 w-px my-2">
                 <motion.div
                   initial={{ scaleY: 0 }}
                   animate={isInView ? { scaleY: 1 } : {}}
                   transition={{ delay: index * 0.15 + 0.3, duration: 0.4 }}
                   className="absolute inset-0 bg-border origin-top"
+                />
+                {/* Arrow down */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ delay: index * 0.15 + 0.5, duration: 0.3 }}
+                  className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-t-[6px] border-t-muted border-x-[4px] border-x-transparent"
                 />
               </div>
             )}
