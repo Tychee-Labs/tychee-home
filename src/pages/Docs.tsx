@@ -1,67 +1,192 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { GradientBlob } from "@/components/ui/GradientBlob";
 import { DocsHeader } from "@/components/docs/DocsHeader";
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
-import { DocsContent } from "@/components/docs/DocsContent";
-import { DocsTableOfContents } from "@/components/docs/DocsTableOfContents";
+import { DocsPageTemplate, DocsH2, DocsH3, DocsP, DocsUl, DocsLi, DocsInlineCode, DocsTable, DocsThead, DocsTr, DocsTh, DocsTd } from "@/components/docs/DocsPageTemplate";
+import { DocsCodeBlock } from "@/components/docs/DocsCodeBlock";
+import { DocsCallout } from "@/components/docs/DocsCallout";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-// Auto-generated TOC from content headings
-const tocHeadings = [
-  { id: "introduction", text: "Introduction", level: 2 },
-  { id: "installation", text: "Installation", level: 2 },
-  { id: "quick-start", text: "Quick Start", level: 2 },
-  { id: "configuration", text: "Configuration", level: 2 },
-  { id: "wallet-connection", text: "Wallet Connection", level: 2 },
-  { id: "account-abstraction", text: "Account Abstraction", level: 2 },
-  { id: "gas-sponsorship", text: "Gas Sponsorship", level: 2 },
-  { id: "session-keys", text: "Session Keys", level: 2 },
-  { id: "tychee-provider", text: "TycheeProvider", level: 2 },
-  { id: "use-wallet", text: "useWallet Hook", level: 2 },
+// Navigation map for prev/next
+const navOrder = [
+  { href: "/docs/introduction", title: "Introduction" },
+  { href: "/docs/installation", title: "Installation" },
+  { href: "/docs/quickstart", title: "Quickstart" },
+  { href: "/docs/token-vault", title: "Token Vault" },
+  { href: "/docs/card-lifecycle", title: "Card Lifecycle" },
+  { href: "/docs/account-abstraction", title: "Account Abstraction" },
+  { href: "/docs/encryption-model", title: "Encryption Model" },
+  { href: "/docs/key-derivation", title: "Key Derivation" },
+  { href: "/docs/threat-model", title: "Threat Model" },
+  { href: "/docs/api/tychee-sdk", title: "TycheeSDK" },
+  { href: "/docs/api/store-card", title: "storeCard" },
+  { href: "/docs/api/retrieve-card", title: "retrieveCard" },
+  { href: "/docs/api/revoke-card", title: "revokeCard" },
+  { href: "/docs/guides/nextjs", title: "Next.js Integration" },
+  { href: "/docs/guides/testnet-mainnet", title: "Testnet to Mainnet Checklist" },
 ];
+
+const getNavLinks = (currentHref: string) => {
+  const currentIndex = navOrder.findIndex(item => item.href === currentHref);
+  return {
+    previous: currentIndex > 0 ? navOrder[currentIndex - 1] : undefined,
+    next: currentIndex < navOrder.length - 1 ? navOrder[currentIndex + 1] : undefined,
+  };
+};
+
+// Sample TOC for Introduction page
+const introHeadings = [
+  { id: "what-is-tychee", text: "What is Tychee?", level: 2 },
+  { id: "key-features", text: "Key Features", level: 2 },
+  { id: "how-it-works", text: "How It Works", level: 2 },
+  { id: "architecture", text: "Architecture", level: 3 },
+  { id: "supported-chains", text: "Supported Chains", level: 2 },
+];
+
+const IntroductionContent = () => {
+  const { previous, next } = getNavLinks("/docs/introduction");
+  
+  return (
+    <DocsPageTemplate
+      title="Introduction"
+      description="Tychee SDK enables secure, compliant card tokenization and storage on Web3 infrastructure. Build payment experiences without handling raw card data."
+      badge="Getting Started"
+      headings={introHeadings}
+      previous={previous}
+      next={next}
+    >
+      <DocsH2 id="what-is-tychee">What is Tychee?</DocsH2>
+      <DocsP>
+        Tychee is a developer SDK that brings PCI-compliant card tokenization to Web3 applications. 
+        It allows you to securely store, retrieve, and revoke payment card data using decentralized 
+        infrastructure—eliminating the need for centralized databases.
+      </DocsP>
+
+      <DocsCallout type="note">
+        Tychee handles the complexity of encryption and key management so you can focus on 
+        building great user experiences.
+      </DocsCallout>
+
+      <DocsH2 id="key-features">Key Features</DocsH2>
+      <DocsUl>
+        <DocsLi>
+          <strong className="text-foreground">Zero-Knowledge Encryption</strong> — Card data is encrypted client-side 
+          before it ever touches our infrastructure.
+        </DocsLi>
+        <DocsLi>
+          <strong className="text-foreground">PCI DSS Compliant</strong> — Built from the ground up to meet 
+          payment industry security standards.
+        </DocsLi>
+        <DocsLi>
+          <strong className="text-foreground">Multi-Chain Support</strong> — Works seamlessly across Ethereum, 
+          Polygon, Arbitrum, and more.
+        </DocsLi>
+        <DocsLi>
+          <strong className="text-foreground">Account Abstraction Ready</strong> — Optional ERC-4337 integration 
+          for gasless transactions.
+        </DocsLi>
+      </DocsUl>
+
+      <DocsH2 id="how-it-works">How It Works</DocsH2>
+      <DocsP>
+        The SDK provides a simple API for the complete card lifecycle:
+      </DocsP>
+
+      <DocsCodeBlock
+        filename="example.ts"
+        language="typescript"
+        code={`import { TycheeSDK } from '@tychee/sdk';
+
+// Initialize the SDK
+const tychee = new TycheeSDK({
+  projectId: 'your-project-id',
+  chain: 'ethereum',
+});
+
+// Store a card securely
+const token = await tychee.storeCard({
+  number: '4242424242424242',
+  expMonth: 12,
+  expYear: 2025,
+  cvc: '123',
+});
+
+// Retrieve card data when needed
+const card = await tychee.retrieveCard(token);
+
+// Revoke access when done
+await tychee.revokeCard(token);`}
+      />
+
+      <DocsH3 id="architecture">Architecture</DocsH3>
+      <DocsP>
+        Tychee uses a hybrid architecture that combines the security of client-side encryption 
+        with the reliability of decentralized storage:
+      </DocsP>
+
+      <DocsCallout type="tip" title="Best Practice">
+        Always initialize the SDK on the client side to ensure card data never passes through 
+        your servers unencrypted.
+      </DocsCallout>
+
+      <DocsH2 id="supported-chains">Supported Chains</DocsH2>
+      <DocsP>
+        Tychee currently supports the following networks:
+      </DocsP>
+
+      <DocsTable>
+        <DocsThead>
+          <DocsTr>
+            <DocsTh>Network</DocsTh>
+            <DocsTh>Chain ID</DocsTh>
+            <DocsTh>Status</DocsTh>
+          </DocsTr>
+        </DocsThead>
+        <tbody>
+          <DocsTr>
+            <DocsTd>Ethereum Mainnet</DocsTd>
+            <DocsTd><DocsInlineCode>1</DocsInlineCode></DocsTd>
+            <DocsTd><span className="text-green-500">✓ Live</span></DocsTd>
+          </DocsTr>
+          <DocsTr>
+            <DocsTd>Polygon</DocsTd>
+            <DocsTd><DocsInlineCode>137</DocsInlineCode></DocsTd>
+            <DocsTd><span className="text-green-500">✓ Live</span></DocsTd>
+          </DocsTr>
+          <DocsTr>
+            <DocsTd>Arbitrum One</DocsTd>
+            <DocsTd><DocsInlineCode>42161</DocsInlineCode></DocsTd>
+            <DocsTd><span className="text-green-500">✓ Live</span></DocsTd>
+          </DocsTr>
+          <DocsTr>
+            <DocsTd>Base</DocsTd>
+            <DocsTd><DocsInlineCode>8453</DocsInlineCode></DocsTd>
+            <DocsTd><span className="text-yellow-500">Coming Soon</span></DocsTd>
+          </DocsTr>
+        </tbody>
+      </DocsTable>
+
+      <DocsCallout type="warning" title="Testnet Usage">
+        For development, we recommend using Sepolia or Polygon Mumbai testnets. 
+        See our <a href="/docs/guides/testnet-mainnet" className="text-primary hover:underline">Testnet to Mainnet guide</a> for migration steps.
+      </DocsCallout>
+    </DocsPageTemplate>
+  );
+};
 
 const Docs = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("#introduction");
+  const [activeItem, setActiveItem] = useState("/docs/introduction");
   const isMobile = useIsMobile();
 
-  // Close mobile menu on navigation
   const handleItemClick = (href: string) => {
     setActiveItem(href);
     setMobileMenuOpen(false);
-    
-    const element = document.getElementById(href.replace("#", ""));
-    if (element) {
-      const offset = 100;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  // Track scroll position to update active item
-  useEffect(() => {
-    const handleScroll = () => {
-      const headings = tocHeadings.map(h => h.id);
-      const scrollPosition = window.scrollY + 150;
-
-      for (const id of headings) {
-        const element = document.getElementById(id);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveItem(`#${id}`);
-            return;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
@@ -94,7 +219,7 @@ const Docs = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="hidden lg:block w-72 shrink-0 border-r border-border h-[calc(100vh-5rem)] sticky top-20 overflow-hidden"
+          className="hidden lg:block w-72 shrink-0 border-r border-border/50 h-[calc(100vh-5rem)] sticky top-20 overflow-hidden"
         >
           <DocsSidebar 
             activeItem={activeItem} 
@@ -108,24 +233,11 @@ const Docs = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-4xl mx-auto px-6 py-12"
+            className="px-6 lg:px-12 py-12"
           >
-            <DocsContent />
+            <IntroductionContent />
           </motion.div>
         </main>
-
-        {/* Table of Contents - Desktop only */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="hidden xl:block w-56 shrink-0 pr-6"
-        >
-          <DocsTableOfContents 
-            headings={tocHeadings}
-            className="pt-12"
-          />
-        </motion.div>
       </div>
     </div>
   );
