@@ -13,7 +13,7 @@ const headings = [
 
 export const QuickstartContent = () => {
   const { previous, next } = getNavLinks("/docs/quickstart");
-  
+
   return (
     <DocsPageTemplate
       title="Quickstart"
@@ -28,13 +28,13 @@ export const QuickstartContent = () => {
         First, create a new project in the Tychee dashboard to get your project ID:
       </DocsP>
       <DocsUl>
-        <DocsLi>Visit <a href="https://dashboard.tychee.io" className="text-primary hover:underline">dashboard.tychee.io</a></DocsLi>
+        <DocsLi>Visit <a href="https://app.tychee.store" className="text-primary hover:underline">app.tychee.store</a></DocsLi>
         <DocsLi>Create a new project</DocsLi>
         <DocsLi>Copy your <DocsInlineCode>projectId</DocsInlineCode> from the settings page</DocsLi>
       </DocsUl>
 
       <DocsCallout type="note">
-        New projects start on testnet by default. Switch to mainnet when you're ready 
+        New projects start on testnet by default. Switch to mainnet when you're ready
         for production.
       </DocsCallout>
 
@@ -83,7 +83,7 @@ async function handlePayment(cardData: CardInput) {
       />
 
       <DocsCallout type="tip" title="Security">
-        The SDK handles all encryption automatically. Raw card data never leaves the 
+        The SDK handles all encryption automatically. Raw card data never leaves the
         user's browser unencrypted.
       </DocsCallout>
 
@@ -115,15 +115,15 @@ async function handlePayment(cardData: CardInput) {
       </DocsP>
       <DocsUl>
         <DocsLi>
-          <a href="/docs/token-vault" className="text-primary hover:underline">Token Vault</a> — 
+          <a href="/docs/token-vault" className="text-primary hover:underline">Token Vault</a> —
           Learn how tokens are stored and managed
         </DocsLi>
         <DocsLi>
-          <a href="/docs/card-lifecycle" className="text-primary hover:underline">Card Lifecycle</a> — 
+          <a href="/docs/card-lifecycle" className="text-primary hover:underline">Card Lifecycle</a> —
           Understand the full store/retrieve/revoke flow
         </DocsLi>
         <DocsLi>
-          <a href="/docs/encryption-model" className="text-primary hover:underline">Encryption Model</a> — 
+          <a href="/docs/encryption-model" className="text-primary hover:underline">Encryption Model</a> —
           Deep dive into our security architecture
         </DocsLi>
       </DocsUl>

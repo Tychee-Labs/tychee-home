@@ -56,11 +56,10 @@ const FAQItem = ({
       className="group"
     >
       <div
-        className={`border rounded-xl overflow-hidden transition-all duration-300 ${
-          isOpen
-            ? "border-primary/30 bg-card shadow-lg shadow-primary/5"
-            : "border-border bg-card/50 hover:border-border hover:bg-card"
-        }`}
+        className={`border rounded-xl overflow-hidden transition-all duration-300 ${isOpen
+          ? "border-primary/30 bg-card shadow-lg shadow-primary/5"
+          : "border-border bg-card/50 hover:border-border hover:bg-card"
+          }`}
       >
         {/* Question button */}
         <button
@@ -68,24 +67,21 @@ const FAQItem = ({
           className="w-full flex items-center justify-between gap-4 p-6 text-left"
         >
           <span
-            className={`text-base sm:text-lg font-medium transition-colors ${
-              isOpen ? "text-foreground" : "text-foreground/90"
-            }`}
+            className={`text-base sm:text-lg font-medium transition-colors ${isOpen ? "text-foreground" : "text-foreground/90"
+              }`}
           >
             {faq.question}
           </span>
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-              isOpen ? "bg-primary/10" : "bg-secondary"
-            }`}
+            className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? "bg-primary/10" : "bg-secondary"
+              }`}
           >
             <ChevronDown
               size={18}
-              className={`transition-colors ${
-                isOpen ? "text-primary" : "text-muted-foreground"
-              }`}
+              className={`transition-colors ${isOpen ? "text-primary" : "text-muted-foreground"
+                }`}
             />
           </motion.div>
         </button>
@@ -165,14 +161,14 @@ export const FAQSection = () => {
           <p className="text-muted-foreground">
             Still have questions?{" "}
             <a
-              href="#"
+              href="mailto:ops@tychee.store"
               className="text-primary hover:underline font-medium link-underline"
             >
               Contact our team
             </a>{" "}
             or{" "}
             <a
-              href="#"
+              href="https://discord.gg/A4vBgXda93"
               className="text-primary hover:underline font-medium link-underline"
             >
               join our Discord

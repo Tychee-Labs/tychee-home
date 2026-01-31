@@ -13,7 +13,7 @@ const headings = [
 
 export const TycheeSDKContent = () => {
   const { previous, next } = getNavLinks("/docs/api/tychee-sdk");
-  
+
   return (
     <DocsPageTemplate
       title="TycheeSDK"
@@ -85,7 +85,7 @@ const tychee = new TycheeSDK(config: TycheeConfig);`}
   environment: 'mainnet',
   accountAbstraction: {
     enabled: true,
-    bundlerUrl: 'https://bundler.tychee.io',
+    bundlerUrl: 'https://bundler.tychee.store',
   },
 });`}
       />
@@ -96,15 +96,15 @@ const tychee = new TycheeSDK(config: TycheeConfig);`}
       </DocsP>
       <DocsUl>
         <DocsLi>
-          <a href="/docs/api/store-card" className="text-primary hover:underline font-mono">storeCard()</a> — 
+          <a href="/docs/api/store-card" className="text-primary hover:underline font-mono">storeCard()</a> —
           Encrypt and store a card in the vault
         </DocsLi>
         <DocsLi>
-          <a href="/docs/api/retrieve-card" className="text-primary hover:underline font-mono">retrieveCard()</a> — 
+          <a href="/docs/api/retrieve-card" className="text-primary hover:underline font-mono">retrieveCard()</a> —
           Decrypt and retrieve stored card data
         </DocsLi>
         <DocsLi>
-          <a href="/docs/api/revoke-card" className="text-primary hover:underline font-mono">revokeCard()</a> — 
+          <a href="/docs/api/revoke-card" className="text-primary hover:underline font-mono">revokeCard()</a> —
           Permanently delete a card from the vault
         </DocsLi>
       </DocsUl>
@@ -154,7 +154,7 @@ try {
       />
 
       <DocsCallout type="tip" title="TypeScript">
-        All errors extend <DocsInlineCode>TycheeError</DocsInlineCode> and include 
+        All errors extend <DocsInlineCode>TycheeError</DocsInlineCode> and include
         <DocsInlineCode>code</DocsInlineCode> and <DocsInlineCode>message</DocsInlineCode> properties.
       </DocsCallout>
     </DocsPageTemplate>

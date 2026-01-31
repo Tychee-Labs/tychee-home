@@ -14,7 +14,7 @@ const headings = [
 
 export const NextjsGuideContent = () => {
   const { previous, next } = getNavLinks("/docs/guides/nextjs");
-  
+
   return (
     <DocsPageTemplate
       title="Next.js Integration"
@@ -26,8 +26,8 @@ export const NextjsGuideContent = () => {
     >
       <DocsH2 id="overview">Overview</DocsH2>
       <DocsP>
-        This guide covers integrating Tychee with Next.js 14 using the App Router. 
-        Since Tychee's encryption happens client-side, we'll use React Client Components 
+        This guide covers integrating Tychee with Next.js 14 using the App Router.
+        Since Tychee's encryption happens client-side, we'll use React Client Components
         for the card form.
       </DocsP>
 
@@ -46,12 +46,12 @@ export const NextjsGuideContent = () => {
         filename=".env.local"
         language="bash"
         code={`NEXT_PUBLIC_TYCHEE_PROJECT_ID=proj_abc123
-NEXT_PUBLIC_TYCHEE_CHAIN=ethereum
+NEXT_PUBLIC_TYCHEE_CHAIN=stellar
 NEXT_PUBLIC_TYCHEE_ENV=testnet`}
       />
 
       <DocsCallout type="note">
-        Use <DocsInlineCode>NEXT_PUBLIC_</DocsInlineCode> prefix for variables that 
+        Use <DocsInlineCode>NEXT_PUBLIC_</DocsInlineCode> prefix for variables that
         need to be available in the browser for client-side encryption.
       </DocsCallout>
 
@@ -108,7 +108,7 @@ export function CardForm() {
   return (
     <TycheeProvider
       projectId={process.env.NEXT_PUBLIC_TYCHEE_PROJECT_ID!}
-      chain={process.env.NEXT_PUBLIC_TYCHEE_CHAIN as 'ethereum'}
+      chain={process.env.NEXT_PUBLIC_TYCHEE_CHAIN as 'stellar'}
     >
       <CardFormInner />
     </TycheeProvider>
@@ -146,7 +146,7 @@ export async function saveCardToken(tokenId: string) {
       />
 
       <DocsCallout type="warning" title="Security">
-        Never log or store raw card data on your server. Only store the token ID 
+        Never log or store raw card data on your server. Only store the token ID
         returned by <DocsInlineCode>storeCard()</DocsInlineCode>.
       </DocsCallout>
 
@@ -192,7 +192,7 @@ export async function GET(req: NextRequest) {
       />
 
       <DocsCallout type="tip" title="Best Practice">
-        Use <DocsInlineCode>TycheeServer</DocsInlineCode> on the backend with your 
+        Use <DocsInlineCode>TycheeServer</DocsInlineCode> on the backend with your
         secret key for operations that don't require user signatures.
       </DocsCallout>
     </DocsPageTemplate>

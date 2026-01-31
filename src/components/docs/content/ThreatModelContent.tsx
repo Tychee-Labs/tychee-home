@@ -13,7 +13,7 @@ const headings = [
 
 export const ThreatModelContent = () => {
   const { previous, next } = getNavLinks("/docs/threat-model");
-  
+
   return (
     <DocsPageTemplate
       title="Threat Model"
@@ -25,13 +25,13 @@ export const ThreatModelContent = () => {
     >
       <DocsH2 id="overview">Overview</DocsH2>
       <DocsP>
-        Tychee's threat model assumes that attackers may have access to encrypted data, 
-        network traffic, and even parts of our infrastructure. Our security design ensures 
+        Tychee's threat model assumes that attackers may have access to encrypted data,
+        network traffic, and even parts of our infrastructure. Our security design ensures
         that even in these scenarios, card data remains protected.
       </DocsP>
 
       <DocsCallout type="note">
-        This document is reviewed and updated quarterly to address new threats and 
+        This document is reviewed and updated quarterly to address new threats and
         vulnerabilities in the ecosystem.
       </DocsCallout>
 
@@ -77,19 +77,19 @@ export const ThreatModelContent = () => {
       </DocsP>
       <DocsUl>
         <DocsLi>
-          <strong>Data Breach</strong> — Encrypted data is stolen from storage. 
+          <strong>Data Breach</strong> — Encrypted data is stolen from storage.
           <span className="text-green-500 ml-2">Low Risk</span> (data is encrypted, keys are not stored)
         </DocsLi>
         <DocsLi>
-          <strong>Man-in-the-Middle</strong> — Network traffic intercepted. 
+          <strong>Man-in-the-Middle</strong> — Network traffic intercepted.
           <span className="text-green-500 ml-2">Low Risk</span> (TLS + client-side encryption)
         </DocsLi>
         <DocsLi>
-          <strong>Wallet Compromise</strong> — User's private key stolen. 
+          <strong>Wallet Compromise</strong> — User's private key stolen.
           <span className="text-yellow-500 ml-2">Medium Risk</span> (attacker can decrypt user's data)
         </DocsLi>
         <DocsLi>
-          <strong>XSS/Injection</strong> — Malicious code in the browser. 
+          <strong>XSS/Injection</strong> — Malicious code in the browser.
           <span className="text-yellow-500 ml-2">Medium Risk</span> (CSP and sanitization help)
         </DocsLi>
       </DocsUl>
@@ -130,7 +130,7 @@ const tychee = new TycheeSDK({
       />
 
       <DocsCallout type="tip" title="Defense in Depth">
-        Our security model uses multiple layers of protection. Even if one layer is 
+        Our security model uses multiple layers of protection. Even if one layer is
         bypassed, others remain to protect the data.
       </DocsCallout>
 
@@ -140,27 +140,27 @@ const tychee = new TycheeSDK({
       </DocsP>
       <DocsUl>
         <DocsLi>
-          <strong>User's device is secure</strong> — The browser and OS are not compromised. 
+          <strong>User's device is secure</strong> — The browser and OS are not compromised.
           We cannot protect against keyloggers or browser extensions with full access.
         </DocsLi>
         <DocsLi>
-          <strong>Cryptographic primitives are sound</strong> — AES-256-GCM and PBKDF2 have 
+          <strong>Cryptographic primitives are sound</strong> — AES-256-GCM and PBKDF2 have
           no practical weaknesses.
         </DocsLi>
         <DocsLi>
-          <strong>Wallet signature is authentic</strong> — The signature comes from the 
+          <strong>Wallet signature is authentic</strong> — The signature comes from the
           legitimate wallet owner.
         </DocsLi>
         <DocsLi>
-          <strong>Blockchain is immutable</strong> — Access control records on-chain cannot 
+          <strong>Blockchain is immutable</strong> — Access control records on-chain cannot
           be altered without consensus.
         </DocsLi>
       </DocsUl>
 
       <DocsCallout type="warning" title="Reporting Vulnerabilities">
         If you discover a security issue, please report it responsibly to{" "}
-        <a href="mailto:security@tychee.io" className="text-primary hover:underline">
-          security@tychee.io
+        <a href="mailto:security@tychee.store" className="text-primary hover:underline">
+          security@tychee.store
         </a>. We offer a bug bounty program for qualifying reports.
       </DocsCallout>
     </DocsPageTemplate>

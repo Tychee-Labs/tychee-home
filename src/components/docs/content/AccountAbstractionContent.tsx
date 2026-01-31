@@ -13,7 +13,7 @@ const headings = [
 
 export const AccountAbstractionContent = () => {
   const { previous, next } = getNavLinks("/docs/account-abstraction");
-  
+
   return (
     <DocsPageTemplate
       title="Account Abstraction"
@@ -25,8 +25,8 @@ export const AccountAbstractionContent = () => {
     >
       <DocsH2 id="what-is-aa">What is Account Abstraction?</DocsH2>
       <DocsP>
-        Account Abstraction (ERC-4337) allows users to interact with Tychee without 
-        holding ETH for gas fees. Transactions are sponsored by a paymaster, creating 
+        Account Abstraction (ERC-4337) allows users to interact with Tychee without
+        holding ETH for gas fees. Transactions are sponsored by a paymaster, creating
         a seamless Web2-like experience.
       </DocsP>
       <DocsUl>
@@ -53,8 +53,8 @@ const tychee = new TycheeSDK({
   chain: 'ethereum',
   accountAbstraction: {
     enabled: true,
-    bundlerUrl: 'https://bundler.tychee.io',
-    paymasterUrl: 'https://paymaster.tychee.io',
+    bundlerUrl: 'https://bundler.tychee.store',
+    paymasterUrl: 'https://paymaster.tychee.store',
   },
 });`}
       />
@@ -128,7 +128,7 @@ const card = await tychee.retrieveCard(tokenId, {
       />
 
       <DocsCallout type="tip" title="Best Practice">
-        Use session keys for checkout flows where users may retrieve cards multiple times 
+        Use session keys for checkout flows where users may retrieve cards multiple times
         without wanting to sign each request.
       </DocsCallout>
 
@@ -144,7 +144,7 @@ const card = await tychee.retrieveCard(tokenId, {
   chain: 'ethereum',
   accountAbstraction: {
     enabled: true,
-    bundlerUrl: 'https://bundler.tychee.io',
+    bundlerUrl: 'https://bundler.tychee.store',
     // Custom paymaster
     paymaster: {
       type: 'custom',
@@ -158,7 +158,7 @@ const card = await tychee.retrieveCard(tokenId, {
       />
 
       <DocsCallout type="warning" title="Rate Limits">
-        Tychee's default paymaster has usage limits. For high-volume applications, 
+        Tychee's default paymaster has usage limits. For high-volume applications,
         consider setting up your own paymaster or contact us for enterprise limits.
       </DocsCallout>
     </DocsPageTemplate>

@@ -14,7 +14,7 @@ const headings = [
 
 export const TestnetMainnetContent = () => {
   const { previous, next } = getNavLinks("/docs/guides/testnet-mainnet");
-  
+
   return (
     <DocsPageTemplate
       title="Testnet to Mainnet Checklist"
@@ -26,13 +26,13 @@ export const TestnetMainnetContent = () => {
     >
       <DocsH2 id="overview">Overview</DocsH2>
       <DocsP>
-        This guide walks you through the steps to safely migrate your Tychee 
-        integration from testnet to mainnet. Follow each step carefully to 
+        This guide walks you through the steps to safely migrate your Tychee
+        integration from testnet to mainnet. Follow each step carefully to
         ensure a smooth transition.
       </DocsP>
 
       <DocsCallout type="warning" title="Important">
-        Testnet tokens cannot be migrated to mainnet. Users will need to re-add 
+        Testnet tokens cannot be migrated to mainnet. Users will need to re-add
         their cards on the production environment.
       </DocsCallout>
 
@@ -50,7 +50,7 @@ export const TestnetMainnetContent = () => {
       </DocsUl>
 
       <DocsH2 id="migration-steps">Migration Steps</DocsH2>
-      
+
       <DocsP>
         <strong>Step 1:</strong> Create a mainnet project in the Tychee dashboard:
       </DocsP>
@@ -71,7 +71,7 @@ export const TestnetMainnetContent = () => {
         language="bash"
         code={`# Production environment
 NEXT_PUBLIC_TYCHEE_PROJECT_ID=proj_mainnet_abc123
-NEXT_PUBLIC_TYCHEE_CHAIN=ethereum
+NEXT_PUBLIC_TYCHEE_CHAIN=stellar
 NEXT_PUBLIC_TYCHEE_ENV=mainnet
 
 # Server-side (keep secret!)
@@ -88,7 +88,7 @@ TYCHEE_SECRET_KEY=sk_live_xyz789`}
 
 export const tychee = new TycheeSDK({
   projectId: process.env.NEXT_PUBLIC_TYCHEE_PROJECT_ID!,
-  chain: process.env.NEXT_PUBLIC_TYCHEE_CHAIN as 'ethereum',
+  chain: process.env.NEXT_PUBLIC_TYCHEE_CHAIN as 'stellar',
   environment: 'mainnet', // Changed from 'testnet'
 });`}
       />
@@ -113,7 +113,7 @@ export const tychee = new TycheeSDK({
       </DocsUl>
 
       <DocsCallout type="tip" title="Gradual Rollout">
-        Consider using feature flags to gradually roll out mainnet to a subset of 
+        Consider using feature flags to gradually roll out mainnet to a subset of
         users before full deployment.
       </DocsCallout>
 
@@ -164,7 +164,7 @@ const tychee = new TycheeSDK({
       />
 
       <DocsCallout type="note">
-        Keep your testnet project active for at least 30 days after migration 
+        Keep your testnet project active for at least 30 days after migration
         for debugging and comparison purposes.
       </DocsCallout>
     </DocsPageTemplate>

@@ -75,8 +75,8 @@ type TabId = (typeof tabs)[number]["id"];
 
 const highlights = [
   { icon: Clock, label: "3-minute integration" },
-  { icon: FileCode, label: "Typed SDK" },
-  { icon: TestTube, label: "Testnet-first" },
+  { icon: FileCode, label: "TypeScript SDK" },
+
 ];
 
 export const DeveloperSection = () => {
@@ -166,11 +166,10 @@ export const DeveloperSection = () => {
                         <button
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
-                          className={`relative px-4 py-3 text-xs font-mono transition-colors ${
-                            activeTab === tab.id
-                              ? "text-foreground"
-                              : "text-muted-foreground hover:text-foreground"
-                          }`}
+                          className={`relative px-4 py-3 text-xs font-mono transition-colors ${activeTab === tab.id
+                            ? "text-foreground"
+                            : "text-muted-foreground hover:text-foreground"
+                            }`}
                         >
                           {tab.label}
                           {activeTab === tab.id && (

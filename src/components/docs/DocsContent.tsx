@@ -51,11 +51,11 @@ export const DocsContent = () => {
             Tychee SDK Documentation
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Build seamless Web3 experiences with account abstraction, gas sponsorship, and 
-            social logins. The Tychee SDK provides everything you need to create user-friendly 
+            Build seamless Web3 experiences with account abstraction, gas sponsorship, and
+            social logins. The Tychee SDK provides everything you need to create user-friendly
             decentralized applications.
           </p>
-          
+
           <div className="grid md:grid-cols-3 gap-4 my-8">
             {[
               { icon: Terminal, title: "Quick Setup", desc: "Get started in under 5 minutes" },
@@ -88,13 +88,13 @@ export const DocsContent = () => {
           <p className="text-muted-foreground mb-4">
             Install the Tychee SDK using your preferred package manager:
           </p>
-          
+
           <CodeBlock code="npm install @tychee/sdk" />
-          
+
           <p className="text-sm text-muted-foreground mt-4">
             Or using yarn or pnpm:
           </p>
-          
+
           <CodeBlock code="yarn add @tychee/sdk" />
           <CodeBlock code="pnpm add @tychee/sdk" />
         </section>
@@ -110,8 +110,8 @@ export const DocsContent = () => {
           <p className="text-muted-foreground mb-4">
             Wrap your application with the TycheeProvider and start building:
           </p>
-          
-          <CodeBlock 
+
+          <CodeBlock
             language="tsx"
             code={`import { TycheeProvider } from '@tychee/sdk';
 
@@ -124,11 +124,11 @@ function App() {
       <YourApp />
     </TycheeProvider>
   );
-}`} 
+}`}
           />
 
           <InfoCard icon={Zap} title="Pro Tip">
-            Enable gas sponsorship by adding the <code className="text-primary">sponsorGas</code> prop 
+            Enable gas sponsorship by adding the <code className="text-primary">sponsorGas</code> prop
             to cover transaction fees for your users.
           </InfoCard>
         </section>
@@ -144,18 +144,18 @@ function App() {
           <p className="text-muted-foreground mb-4">
             Configure the SDK with your project settings:
           </p>
-          
-          <CodeBlock 
+
+          <CodeBlock
             language="tsx"
             code={`const config = {
   projectId: process.env.TYCHEE_PROJECT_ID,
-  chains: ['ethereum', 'polygon', 'arbitrum'],
+  chains: [ 'stellar'],
   
   // Account Abstraction settings
   accountAbstraction: {
     enabled: true,
-    bundlerUrl: 'https://bundler.tychee.io',
-    paymasterUrl: 'https://paymaster.tychee.io',
+    bundlerUrl: 'https://bundler.tychee.store',
+    paymasterUrl: 'https://paymaster.tychee.store',
   },
   
   // Social login providers
@@ -170,7 +170,7 @@ function App() {
     primaryColor: '#f2572b',
     borderRadius: 12,
   },
-};`} 
+};`}
           />
         </section>
       </AnimatedSection>
@@ -180,11 +180,11 @@ function App() {
         <section id="wallet-connection" className="mb-16">
           <h2 className="text-2xl font-bold text-foreground mb-6">Wallet Connection</h2>
           <p className="text-muted-foreground mb-4">
-            Connect wallets seamlessly with built-in support for WalletConnect, Coinbase Wallet, 
+            Connect wallets seamlessly with built-in support for WalletConnect, Coinbase Wallet,
             and social logins:
           </p>
-          
-          <CodeBlock 
+
+          <CodeBlock
             language="tsx"
             code={`import { useWallet } from '@tychee/sdk';
 
@@ -200,7 +200,7 @@ function ConnectButton() {
   }
   
   return <button onClick={connect}>Connect Wallet</button>;
-}`} 
+}`}
           />
         </section>
       </AnimatedSection>
@@ -210,10 +210,10 @@ function ConnectButton() {
         <section id="account-abstraction" className="mb-16">
           <h2 className="text-2xl font-bold text-foreground mb-6">Account Abstraction</h2>
           <p className="text-muted-foreground mb-4">
-            Leverage ERC-4337 account abstraction for enhanced user experience. Smart accounts 
+            Leverage ERC-4337 account abstraction for enhanced user experience. Smart accounts
             enable features like batch transactions, session keys, and gas sponsorship.
           </p>
-          
+
           <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-6 my-6">
             <h4 className="font-semibold text-foreground mb-3">Key Benefits</h4>
             <ul className="space-y-2 text-muted-foreground">
@@ -245,8 +245,8 @@ function ConnectButton() {
           <p className="text-muted-foreground mb-4">
             Remove the friction of gas fees by sponsoring transactions for your users:
           </p>
-          
-          <CodeBlock 
+
+          <CodeBlock
             language="tsx"
             code={`import { useSponsor } from '@tychee/sdk';
 
@@ -270,7 +270,7 @@ function SponsoredTransaction() {
       <button onClick={handleMint}>Mint NFT (Gas Free!)</button>
     </div>
   );
-}`} 
+}`}
           />
         </section>
       </AnimatedSection>
@@ -280,11 +280,11 @@ function SponsoredTransaction() {
         <section id="session-keys" className="mb-16">
           <h2 className="text-2xl font-bold text-foreground mb-6">Session Keys</h2>
           <p className="text-muted-foreground mb-4">
-            Create temporary keys with limited permissions for seamless UX in gaming, 
+            Create temporary keys with limited permissions for seamless UX in gaming,
             trading, and other high-frequency use cases.
           </p>
-          
-          <CodeBlock 
+
+          <CodeBlock
             language="tsx"
             code={`import { useSessionKey } from '@tychee/sdk';
 
@@ -305,7 +305,7 @@ function GameSession() {
   };
   
   return <button onClick={startGame}>Start Playing</button>;
-}`} 
+}`}
           />
         </section>
       </AnimatedSection>
@@ -317,7 +317,7 @@ function GameSession() {
           <p className="text-muted-foreground mb-4">
             The root provider component that initializes the SDK and provides context to all child components.
           </p>
-          
+
           <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Props</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -357,8 +357,8 @@ function GameSession() {
           <p className="text-muted-foreground mb-4">
             The primary hook for wallet connection and management.
           </p>
-          
-          <CodeBlock 
+
+          <CodeBlock
             language="tsx"
             code={`const {
   // Connection
@@ -377,7 +377,7 @@ function GameSession() {
   // Signing
   signMessage,  // (message: string) => Promise<string>
   signTypedData, // (data: TypedData) => Promise<string>
-} = useWallet();`} 
+} = useWallet();`}
           />
         </section>
       </AnimatedSection>

@@ -13,7 +13,7 @@ const headings = [
 
 export const TokenVaultContent = () => {
   const { previous, next } = getNavLinks("/docs/token-vault");
-  
+
   return (
     <DocsPageTemplate
       title="Token Vault"
@@ -25,13 +25,13 @@ export const TokenVaultContent = () => {
     >
       <DocsH2 id="overview">Overview</DocsH2>
       <DocsP>
-        The Token Vault is a decentralized storage system that holds encrypted card tokens. 
-        Each token represents a unique card and contains the encrypted data plus metadata 
+        The Token Vault is a decentralized storage system that holds encrypted card tokens.
+        Each token represents a unique card and contains the encrypted data plus metadata
         for access control.
       </DocsP>
 
       <DocsCallout type="note">
-        The vault never stores raw card data. All sensitive information is encrypted 
+        The vault never stores raw card data. All sensitive information is encrypted
         client-side before transmission.
       </DocsCallout>
 
@@ -60,7 +60,7 @@ export const TokenVaultContent = () => {
 }`}
       />
 
-      <DocsH2 id="storage-backends">Storage Backends</DocsH2>
+      {/* <DocsH2 id="storage-backends">Storage Backends</DocsH2>
       <DocsP>
         Tychee supports multiple storage backends for different use cases:
       </DocsP>
@@ -89,7 +89,7 @@ export const TokenVaultContent = () => {
             <DocsTd>Balance of speed & decentralization</DocsTd>
           </DocsTr>
         </tbody>
-      </DocsTable>
+      </DocsTable> */}
 
       <DocsCodeBlock
         filename="config.ts"
@@ -115,13 +115,13 @@ export const TokenVaultContent = () => {
       </DocsUl>
 
       <DocsCallout type="tip" title="Duplicate Detection">
-        Use the <DocsInlineCode>fingerprint</DocsInlineCode> field to check if a user 
+        Use the <DocsInlineCode>fingerprint</DocsInlineCode> field to check if a user
         has already stored the same card, preventing duplicates in your system.
       </DocsCallout>
 
       <DocsH2 id="access-control">Access Control</DocsH2>
       <DocsP>
-        Token access is controlled by wallet ownership. Only the wallet that stored the 
+        Token access is controlled by wallet ownership. Only the wallet that stored the
         card can retrieve or revoke it:
       </DocsP>
       <DocsCodeBlock

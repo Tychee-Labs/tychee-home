@@ -20,7 +20,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       {/* Global grain overlay - subtle texture across entire page */}
       <div className="global-grain" aria-hidden="true" />
-      
+
       <GradientBlob />
       <Header />
       <main>
@@ -31,7 +31,7 @@ const Index = () => {
         <DeveloperSection />
         <UseCasesSection />
         <AccountAbstractionSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         <PricingSection />
         <FAQSection />
         <Integration />

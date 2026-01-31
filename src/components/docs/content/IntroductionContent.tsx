@@ -8,12 +8,12 @@ const headings = [
   { id: "key-features", text: "Key Features", level: 2 },
   { id: "how-it-works", text: "How It Works", level: 2 },
   { id: "architecture", text: "Architecture", level: 3 },
-  { id: "supported-chains", text: "Supported Chains", level: 2 },
+  // { id: "supported-chains", text: "Supported Chains", level: 2 },
 ];
 
 export const IntroductionContent = () => {
   const { previous, next } = getNavLinks("/docs/introduction");
-  
+
   return (
     <DocsPageTemplate
       title="Introduction"
@@ -25,32 +25,32 @@ export const IntroductionContent = () => {
     >
       <DocsH2 id="what-is-tychee">What is Tychee?</DocsH2>
       <DocsP>
-        Tychee is a developer SDK that brings PCI-compliant card tokenization to Web3 applications. 
-        It allows you to securely store, retrieve, and revoke payment card data using decentralized 
+        Tychee is a developer SDK that brings PCI-compliant card tokenization to Web3 applications.
+        It allows you to securely store, retrieve, and revoke payment card data using decentralized
         infrastructure—eliminating the need for centralized databases.
       </DocsP>
 
       <DocsCallout type="note">
-        Tychee handles the complexity of encryption and key management so you can focus on 
+        Tychee handles the complexity of encryption and key management so you can focus on
         building great user experiences.
       </DocsCallout>
 
       <DocsH2 id="key-features">Key Features</DocsH2>
       <DocsUl>
         <DocsLi>
-          <strong className="text-foreground">Zero-Knowledge Encryption</strong> — Card data is encrypted client-side 
+          <strong className="text-foreground">Zero-Knowledge Encryption</strong> — Card data is encrypted client-side
           before it ever touches our infrastructure.
         </DocsLi>
         <DocsLi>
-          <strong className="text-foreground">PCI DSS Compliant</strong> — Built from the ground up to meet 
+          <strong className="text-foreground">PCI DSS Compliant</strong> — Built from the ground up to meet
           payment industry security standards.
         </DocsLi>
         <DocsLi>
-          <strong className="text-foreground">Multi-Chain Support</strong> — Works seamlessly across Ethereum, 
+          <strong className="text-foreground">Multi-Chain Support</strong> — Works seamlessly across Ethereum,
           Polygon, Arbitrum, and more.
         </DocsLi>
         <DocsLi>
-          <strong className="text-foreground">Account Abstraction Ready</strong> — Optional ERC-4337 integration 
+          <strong className="text-foreground">Account Abstraction Ready</strong> — Optional ERC-4337 integration
           for gasless transactions.
         </DocsLi>
       </DocsUl>
@@ -88,16 +88,16 @@ await tychee.revokeCard(token);`}
 
       <DocsH3 id="architecture">Architecture</DocsH3>
       <DocsP>
-        Tychee uses a hybrid architecture that combines the security of client-side encryption 
+        Tychee uses a hybrid architecture that combines the security of client-side encryption
         with the reliability of decentralized storage:
       </DocsP>
 
       <DocsCallout type="tip" title="Best Practice">
-        Always initialize the SDK on the client side to ensure card data never passes through 
+        Always initialize the SDK on the client side to ensure card data never passes through
         your servers unencrypted.
       </DocsCallout>
 
-      <DocsH2 id="supported-chains">Supported Chains</DocsH2>
+      {/* <DocsH2 id="supported-chains">Supported Chains</DocsH2>
       <DocsP>
         Tychee currently supports the following networks:
       </DocsP>
@@ -132,10 +132,10 @@ await tychee.revokeCard(token);`}
             <DocsTd><span className="text-yellow-500">Coming Soon</span></DocsTd>
           </DocsTr>
         </tbody>
-      </DocsTable>
+      </DocsTable> */}
 
       <DocsCallout type="warning" title="Testnet Usage">
-        For development, we recommend using Sepolia or Polygon Mumbai testnets. 
+        For development, we recommend using Sepolia or Polygon Mumbai testnets.
         See our <a href="/docs/guides/testnet-mainnet" className="text-primary hover:underline">Testnet to Mainnet guide</a> for migration steps.
       </DocsCallout>
     </DocsPageTemplate>

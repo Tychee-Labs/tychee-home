@@ -108,11 +108,10 @@ const PricingCard = ({
 
         {/* Card */}
         <div
-          className={`relative h-full bg-card border rounded-2xl overflow-hidden transition-all duration-300 group ${
-            tier.popular
-              ? "border-transparent"
-              : "border-border hover:border-primary/30"
-          }`}
+          className={`relative h-full bg-card border rounded-2xl overflow-hidden transition-all duration-300 group ${tier.popular
+            ? "border-transparent"
+            : "border-border hover:border-primary/30"
+            }`}
         >
           {/* Hover glow */}
           <motion.div
@@ -128,9 +127,8 @@ const PricingCard = ({
             {/* Header */}
             <div className="flex items-center gap-3 mb-4">
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  tier.popular ? "bg-primary/20" : "bg-secondary"
-                }`}
+                className={`w-10 h-10 rounded-xl flex items-center justify-center ${tier.popular ? "bg-primary/20" : "bg-secondary"
+                  }`}
               >
                 <tier.icon
                   size={20}
@@ -175,9 +173,8 @@ const PricingCard = ({
                   className="flex items-start gap-3"
                 >
                   <div
-                    className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                      tier.popular ? "bg-primary/20" : "bg-secondary"
-                    }`}
+                    className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${tier.popular ? "bg-primary/20" : "bg-secondary"
+                      }`}
                   >
                     <Check
                       size={12}
@@ -234,7 +231,7 @@ export const PricingSection = () => {
               <Building2 size={14} className="text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
                 Need commercial licensing for regulated industries?{" "}
-                <a href="#" className="text-primary hover:underline">
+                <a href="mailto:ops@tychee.store" className="text-primary hover:underline">
                   Contact our team
                 </a>
               </span>
@@ -247,17 +244,14 @@ export const PricingSection = () => {
                 Have questions?{" "}
                 <a href="#faq" className="text-primary hover:underline link-underline">
                   Check our FAQ
-                </a>{" "}
-                or{" "}
-                <a href="#" className="text-primary hover:underline link-underline">
-                  talk to sales
                 </a>
+
               </span>
             </div>
 
             {/* Usage note */}
             <p className="text-xs text-muted-foreground/70 max-w-md mx-auto">
-              All plans include access to SDK, documentation, and testnet. 
+              All plans include access to SDK, documentation, and testnet.
               Overages billed at $0.002 per additional tokenization.
             </p>
           </div>

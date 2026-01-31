@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 const trustPills = [
   { icon: Lock, label: "AES-256-GCM" },
   { icon: Zap, label: "Soroban Ready" },
-  { icon: Shield, label: "Account Abstraction Optional" },
+  { icon: Shield, label: "Configurable Account Abstraction" },
 ];
 
 export const Hero = () => {
@@ -72,7 +72,7 @@ export const Hero = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/50 backdrop-blur-sm mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm text-muted-foreground">Web3 Card Tokenization SDK</span>
+              <span className="text-sm text-muted-foreground">NextGen Secure Card Handling</span>
             </motion.div>
 
             {/* Headline */}
