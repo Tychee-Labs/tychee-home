@@ -20,7 +20,7 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   { name: "Shankar Warang", role: "Architect", initials: "SW", image: shankarPhoto, twitter: "https://x.com/WarangShankar", linkedin: "https://www.linkedin.com/in/shankar-warang" },
-  { name: "Shreyas Thakur", role: "Intern", initials: "ST", image: shreyasPhoto, twitter: "https://x.com/Shreyas__Thakur", linkedin: "https://www.linkedin.com/in/shreyas-thakur/" },
+  { name: "Shreyas Thakur", role: "Breaks → Fixes", initials: "ST", image: shreyasPhoto, twitter: "https://x.com/Shreyas__Thakur", linkedin: "https://www.linkedin.com/in/shreyas-thakur/" },
   { name: "Aniket Raikar", role: "Wizard", initials: "AR", image: aniketPhoto, twitter: "https://x.com/AniketRaikar06", linkedin: "https://www.linkedin.com/in/aniket-raikar-0ba023243/" },
   { name: "Rama Shankar Jha", role: "Artist", initials: "RJ", image: ramaPhoto, twitter: "https://x.com/rama_vats", linkedin: "https://www.linkedin.com/in/rama-jha" },
 ];
