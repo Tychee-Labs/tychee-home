@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Twitter, Linkedin } from "lucide-react";
+import aniketPhoto from "@/assets/team/aniket-raikar.jpg";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
@@ -17,7 +18,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   { name: "Shankar Warang", role: "Architect", initials: "SW", image: "", twitter: "#", linkedin: "#" },
   { name: "Shreyas Thakur", role: "Intern", initials: "ST", image: "", twitter: "#", linkedin: "#" },
-  { name: "Aniket Raikar", role: "Wizard", initials: "AR", image: "", twitter: "#", linkedin: "#" },
+  { name: "Aniket Raikar", role: "Wizard", initials: "AR", image: aniketPhoto, twitter: "#", linkedin: "#" },
   { name: "Rama Shankar Jha", role: "Artist", initials: "RJ", image: "", twitter: "#", linkedin: "#" },
 ];
 
