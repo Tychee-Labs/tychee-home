@@ -11,7 +11,7 @@ import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { PricingSection } from "@/components/landing/PricingSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { Integration } from "@/components/landing/Integration";
-import { CTA } from "@/components/landing/CTA";
+import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 
 const Index = () => {
@@ -31,7 +31,7 @@ const Index = () => {
         <PricingSection />
         <FAQSection />
         <Integration />
-        <CTA />
+        <FinalCTA />
       </main>
       <Footer />
     </div>
