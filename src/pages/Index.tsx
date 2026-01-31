@@ -1,6 +1,7 @@
 import { GradientBlob } from "@/components/ui/GradientBlob";
 import { Header } from "@/components/landing/Header";
 import { Hero } from "@/components/landing/Hero";
+import { CredibilityStrip } from "@/components/landing/CredibilityStrip";
 import { Features } from "@/components/landing/Features";
 import { CodeShowcase } from "@/components/landing/CodeShowcase";
 import { Integration } from "@/components/landing/Integration";
@@ -14,6 +15,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <CredibilityStrip />
         <Features />
         <CodeShowcase />
         <Integration />
