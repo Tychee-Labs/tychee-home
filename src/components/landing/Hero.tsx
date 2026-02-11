@@ -5,9 +5,9 @@ import { HeroVisual } from "./HeroVisual";
 import { useEffect, useRef } from "react";
 
 const trustPills = [
-  { icon: Lock, label: "AES-256-GCM" },
-  { icon: Zap, label: "Soroban Ready" },
-  { icon: Shield, label: "Configurable Account Abstraction" },
+  { icon: Lock, label: "AES-256-GCM Encryption" },
+  { icon: Zap, label: "Compliance-Ready Architecture" },
+  { icon: Shield, label: "Flexible Account Abstraction" },
 ];
 
 export const Hero = () => {
@@ -84,7 +84,7 @@ export const Hero = () => {
             >
               <span className="text-foreground">Securing Cards Globally</span>
               <br />
-              <span className="text-gradient">Powered by Stellar.</span>
+              <span className="text-gradient">Powered by Self-Custody.</span>
             </motion.h1>
 
             {/* Subheadline */}
@@ -94,7 +94,7 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl"
             >
-              Tychee SDK encrypts card data locally and stores only encrypted payloads on Soroban — built for fast
+              Tychee SDK encrypts card data locally and stores only encrypted payloads on chain — built for fast
               integration and user-owned security.
             </motion.p>
 
