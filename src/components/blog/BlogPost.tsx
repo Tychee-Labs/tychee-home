@@ -15,7 +15,9 @@ export const BlogPost = () => {
     if (post) {
       // Update page meta tags for SEO
       document.title = `${post.title} | Tychee Blog`;
-      const metaDescription = document.querySelector('meta[name="description"]');
+      const metaDescription = document.querySelector(
+        'meta[name="description"]',
+      );
       if (metaDescription) {
         metaDescription.setAttribute("content", post.seo.description);
       }
@@ -29,7 +31,9 @@ export const BlogPost = () => {
       if (ogTitle) {
         ogTitle.setAttribute("content", post.title);
       }
-      const ogDescription = document.querySelector('meta[property="og:description"]');
+      const ogDescription = document.querySelector(
+        'meta[property="og:description"]',
+      );
       if (ogDescription) {
         ogDescription.setAttribute("content", post.seo.description);
       }
@@ -41,7 +45,9 @@ export const BlogPost = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Article not found</h1>
-          <p className="text-muted-foreground mb-8">The article you're looking for doesn't exist.</p>
+          <p className="text-muted-foreground mb-8">
+            The article you're looking for doesn't exist.
+          </p>
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
@@ -96,11 +102,13 @@ export const BlogPost = () => {
             <div className="flex flex-wrap items-center gap-6 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <Calendar size={16} />
-                <time>{new Date(post.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}</time>
+                <time>
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
               </div>
               <div className="flex items-center gap-2">
                 <User size={16} />
@@ -141,19 +149,34 @@ export const BlogPost = () => {
               <ReactMarkdown
                 components={{
                   h1: ({ node, ...props }) => (
-                    <h1 className="text-3xl font-bold mt-8 mb-4 text-foreground" {...props} />
+                    <h1
+                      className="text-3xl font-bold mt-8 mb-4 text-foreground"
+                      {...props}
+                    />
                   ),
                   h2: ({ node, ...props }) => (
-                    <h2 className="text-2xl font-bold mt-6 mb-3 text-foreground" {...props} />
+                    <h2
+                      className="text-2xl font-bold mt-6 mb-3 text-foreground"
+                      {...props}
+                    />
                   ),
                   h3: ({ node, ...props }) => (
-                    <h3 className="text-xl font-semibold mt-4 mb-2 text-foreground" {...props} />
+                    <h3
+                      className="text-xl font-semibold mt-4 mb-2 text-foreground"
+                      {...props}
+                    />
                   ),
                   p: ({ node, ...props }) => (
-                    <p className="mb-4 text-muted-foreground leading-relaxed" {...props} />
+                    <p
+                      className="mb-4 text-muted-foreground leading-relaxed"
+                      {...props}
+                    />
                   ),
                   li: ({ node, ...props }) => (
-                    <li className="ml-6 mb-2 text-muted-foreground leading-relaxed" {...props} />
+                    <li
+                      className="ml-6 mb-2 text-muted-foreground leading-relaxed"
+                      {...props}
+                    />
                   ),
                   ol: ({ node, ...props }) => (
                     <ol className="mb-4 list-decimal" {...props} />
@@ -190,15 +213,19 @@ export const BlogPost = () => {
           <div className="border-t border-b border-border py-8 mb-16">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
-                <h3 className="font-semibold text-foreground mb-2">Share this article</h3>
-                <p className="text-sm text-muted-foreground">Help others discover this content</p>
+                <h3 className="font-semibold text-foreground mb-2">
+                  Share this article
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Help others discover this content
+                </p>
               </div>
               <div className="flex gap-3">
                 <button
                   onClick={() => {
                     window.open(
                       `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`,
-                      "_blank"
+                      "_blank",
                     );
                   }}
                   className="px-4 py-2 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all flex items-center gap-2"
@@ -226,7 +253,11 @@ export const BlogPost = () => {
               <h3 className="text-2xl font-bold mb-8">Related Articles</h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedPosts.map((relatedPost) => (
-                  <Link key={relatedPost.id} to={`/blog/${relatedPost.slug}`} className="group">
+                  <Link
+                    key={relatedPost.id}
+                    to={`/blog/${relatedPost.slug}`}
+                    className="group"
+                  >
                     <div className="border border-border rounded-lg p-6 hover:border-primary/50 hover:bg-primary/5 transition-all">
                       <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {relatedPost.title}
@@ -254,9 +285,12 @@ export const BlogPost = () => {
         className="bg-gradient-to-r from-primary/10 to-primary/5 border-t border-primary/20 py-16"
       >
         <div className="container mx-auto px-6 text-center max-w-2xl">
-          <h3 className="text-2xl font-bold mb-4">Ready to integrate Tychee SDK?</h3>
+          <h3 className="text-2xl font-bold mb-4">
+            Ready to integrate Tychee SDK?
+          </h3>
           <p className="text-muted-foreground mb-8">
-            Start securing card payments with client-side encryption and Web3 integration.
+            Start securing card payments with client-side encryption and Web3
+            integration.
           </p>
           <a
             href="https://www.npmjs.com/package/@tychee/sdk"

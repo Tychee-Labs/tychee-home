@@ -11,12 +11,15 @@ export const BlogListing = () => {
   const categories = getAllCategories();
 
   const filteredPosts = blogPosts.filter((post) => {
-    const matchesCategory = !selectedCategory || post.category === selectedCategory;
+    const matchesCategory =
+      !selectedCategory || post.category === selectedCategory;
     const matchesSearch =
       searchQuery === "" ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
     return matchesCategory && matchesSearch;
   });
 
@@ -34,8 +37,8 @@ export const BlogListing = () => {
             Tychee <span className="text-gradient">Blog</span>
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Insights, updates, and in-depth guides about card tokenization, Web3 payments, and
-            secure financial infrastructure.
+            Insights, updates, and in-depth guides about card tokenization, Web3
+            payments, and secure financial infrastructure.
           </p>
         </motion.div>
 
@@ -48,7 +51,10 @@ export const BlogListing = () => {
         >
           {/* Search Bar */}
           <div className="relative mb-8">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+            <Search
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+              size={20}
+            />
             <input
               type="text"
               placeholder="Search articles..."
@@ -119,7 +125,9 @@ export const BlogListing = () => {
                       <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground mb-4 pt-4 border-t border-border/50">
                         <div className="flex items-center gap-1">
                           <Calendar size={14} />
-                          <time>{new Date(post.date).toLocaleDateString()}</time>
+                          <time>
+                            {new Date(post.date).toLocaleDateString()}
+                          </time>
                         </div>
                         <div className="flex items-center gap-1">
                           <User size={14} />
@@ -181,7 +189,9 @@ export const BlogListing = () => {
                       <h3 className="font-semibold group-hover:text-primary transition-colors line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mt-1">{post.readTime} min read</p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {post.readTime} min read
+                      </p>
                     </div>
                   </div>
                 </Link>

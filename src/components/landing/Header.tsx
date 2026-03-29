@@ -18,30 +18,33 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { scrollY } = useScroll();
-  
+
   const headerBg = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(23, 23, 23, 0)", "rgba(23, 23, 23, 0.85)"]
+    ["rgba(23, 23, 23, 0)", "rgba(23, 23, 23, 0.85)"],
   );
-  
+
   const headerBorder = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(77, 77, 77, 0)", "rgba(77, 77, 77, 0.3)"]
+    ["rgba(77, 77, 77, 0)", "rgba(77, 77, 77, 0.3)"],
   );
 
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map(link => link.href.replace("#", ""));
+      const sections = navLinks.map((link) => link.href.replace("#", ""));
       const scrollPosition = window.scrollY + 150;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             return;
           }
@@ -59,7 +62,7 @@ export const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      style={{ 
+      style={{
         backgroundColor: headerBg,
         borderColor: headerBorder,
       }}
@@ -78,12 +81,11 @@ export const Header = () => {
                   e.currentTarget.style.display = "none";
                 }}
               />
-              <motion.div 
-                className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
+              <motion.div className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="text-lg font-semibold text-foreground tracking-tight">
-              Tychee <span className="text-muted-foreground font-normal">SDK</span>
+              Tychee{" "}
+              <span className="text-muted-foreground font-normal">SDK</span>
             </span>
           </a>
 
@@ -107,7 +109,11 @@ export const Header = () => {
                     <motion.span
                       layoutId="activeSection"
                       className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-primary"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </a>
@@ -120,7 +126,10 @@ export const Header = () => {
             <MagneticButton variant="ghost" href="/docs">
               View Docs
             </MagneticButton>
-            <MagneticButton variant="primary" href="https://www.npmjs.com/package/@tychee/sdk">
+            <MagneticButton
+              variant="primary"
+              href="https://www.npmjs.com/package/@tychee/sdk"
+            >
               Get Started
             </MagneticButton>
           </div>
@@ -138,7 +147,11 @@ export const Header = () => {
         {/* Mobile Menu */}
         <motion.nav
           initial={false}
-          animate={mobileMenuOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+          animate={
+            mobileMenuOpen
+              ? { height: "auto", opacity: 1 }
+              : { height: 0, opacity: 0 }
+          }
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="lg:hidden overflow-hidden"
         >
@@ -168,7 +181,10 @@ export const Header = () => {
                 <MagneticButton variant="ghost" href="/docs">
                   View Docs
                 </MagneticButton>
-                <MagneticButton variant="primary" href="https://www.npmjs.com/package/@tychee/sdk">
+                <MagneticButton
+                  variant="primary"
+                  href="https://www.npmjs.com/package/@tychee/sdk"
+                >
                   Get Started
                 </MagneticButton>
               </div>

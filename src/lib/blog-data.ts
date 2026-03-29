@@ -439,6 +439,6 @@ export function searchBlogPosts(query: string): BlogPost[] {
     (post) =>
       post.title.toLowerCase().includes(lowercaseQuery) ||
       post.excerpt.toLowerCase().includes(lowercaseQuery) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(lowercaseQuery))
+      post.tags.some((tag) => tag.toLowerCase().includes(lowercaseQuery)),
   );
 }
