@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowRight, Play, Shield, Zap, Lock } from "lucide-react";
-import { HeroVisual } from "./HeroVisual";
+import CardScannerDemo from "./CCBurnHero";
 import { useEffect, useRef } from "react";
 
 const trustPills = [
@@ -36,13 +36,18 @@ export const Hero = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
-      {/* Background Layers */}
-      <div className="absolute inset-0">
-        {/* Noise texture */}
-        <div className="absolute inset-0 noise-texture" />
+      {/* Base Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background z-0" />
 
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+      {/* CardScannerDemo Background */}
+      <div className="absolute inset-0 z-[1] pointer-events-auto overflow-hidden hidden md:block">
+        <CardScannerDemo />
+      </div>
+
+      {/* Background Overlay Layers */}
+      <div className="absolute inset-0 pointer-events-none z-[2]">
+        {/* Diagonal shadow or fade */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
 
         {/* Radial glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] rounded-full bg-primary/[0.03] blur-[150px]" />
@@ -50,16 +55,9 @@ export const Hero = () => {
 
       {/* Cursor-follow accent glow */}
       <motion.div
-        className="absolute w-[400px] h-[400px] rounded-full bg-primary/10 blur-[100px] pointer-events-none"
+        className="absolute w-[400px] h-[400px] rounded-full bg-primary/10 blur-[100px] pointer-events-none z-[3]"
         style={{ x: glowX, y: glowY }}
       />
-
-
-
-      {/* 3D Visual Background Slice */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-[65%] h-full z-[1] hidden lg:block pointer-events-auto">
-        <HeroVisual />
-      </div>
 
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10 pointer-events-none">
@@ -75,7 +73,7 @@ export const Hero = () => {
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_rgba(242,87,43,0.8)]" />
               <span className="text-sm font-medium tracking-wide text-primary uppercase letter-spacing-[0.1em]">
-                Enterprise-Grade Card Security
+                NextGen Secure Card Handling
               </span>
             </motion.div>
 

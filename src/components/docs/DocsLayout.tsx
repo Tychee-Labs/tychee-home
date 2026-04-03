@@ -26,8 +26,7 @@ export const DocsLayout = ({ children, activeSlug }: DocsLayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
-      {/* Global grain overlay */}
-      <div className="global-grain" aria-hidden="true" />
+
       
       <GradientBlob />
       <DocsHeader 
