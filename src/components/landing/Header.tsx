@@ -222,7 +222,7 @@ export const Header = () => {
                 <MagneticButton variant="ghost" href="/docs">
                   View Docs
                 </MagneticButton>
-                <div className="relative inline-flex rounded-full">
+                <div className="relative inline-flex w-fit self-start rounded-full">
                   <MagneticButton
                     variant="primary"
                     href="#waitlist"
