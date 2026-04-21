@@ -3,6 +3,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowRight, Play, Shield, Zap, Lock } from "lucide-react";
 import CardScannerDemo from "./CCBurnHero";
 import { useEffect, useRef } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const trustPills = [
   { icon: Lock, label: "AES-256-GCM Encryption" },
@@ -11,6 +12,7 @@ const trustPills = [
 ];
 
 export const Hero = () => {
+  const isMobile = useIsMobile();
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -41,7 +43,7 @@ export const Hero = () => {
 
       {/* CardScannerDemo Background */}
       <div className="absolute inset-0 z-[1] pointer-events-auto overflow-hidden hidden md:block">
-        <CardScannerDemo />
+        {!isMobile ? <CardScannerDemo /> : null}
       </div>
 
       {/* Background Overlay Layers */}
