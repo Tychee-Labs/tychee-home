@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ReactNode, useRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn, isExternalUrl } from "@/lib/utils";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -56,6 +56,7 @@ export const MagneticButton = ({
   };
 
   const Component = href ? motion.a : motion.button;
+  const external = isExternalUrl(href);
 
   return (
     <motion.div
@@ -67,6 +68,8 @@ export const MagneticButton = ({
     >
       <Component
         href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         onClick={onClick}
         className={cn(baseStyles, variants[variant], className)}
         whileHover={disableInteractiveMotion ? undefined : { scale: 1.02 }}
