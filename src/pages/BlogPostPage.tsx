@@ -9,7 +9,7 @@ const BlogPostPage = () => {
 
   return (
     <BlogLayout>
-      <SEO title={`${formatTitle(slug)} - Blog`} description={`Read ${formatTitle(slug)} on Stellar Soroban Studio.`} />
+      <SEO title={`${formatTitle(slug)} - Blog`} description={`Read ${formatTitle(slug)} on Tychee.`} />
       <BlogPost />
     </BlogLayout>
   );

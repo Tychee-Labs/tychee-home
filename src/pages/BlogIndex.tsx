@@ -5,7 +5,7 @@ import SEO from "@/components/SEO";
 const Blog = () => {
   return (
     <BlogLayout>
-      <SEO title="Blog - Stellar Soroban Studio" description="Read the latest updates and articles." />
+      <SEO title="Blog - Tychee" description="Read the latest updates and articles." />
       <BlogListing />
     </BlogLayout>
   );

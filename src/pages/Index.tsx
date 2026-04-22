@@ -20,9 +20,9 @@ import SEO from "@/components/SEO";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
-      <SEO 
-        title="Stellar Soroban Studio" 
-        description="The unified platform for Stellar Soroban Smart Contract Development" 
+      <SEO
+        title="Tychee"
+        description="SDK for securing cards using web3 self custody and global regulations compliancy"
       />
 
       {/* Global grain overlay - subtle texture across entire page */}
