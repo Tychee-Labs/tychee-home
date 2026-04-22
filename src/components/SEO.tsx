@@ -15,10 +15,10 @@ interface SEOProps {
 export default function SEO({
   title,
   description,
-  name = "Stellar Soroban Studio",
+  name = "Tychee",
   type = "website",
   canonicalUrl = "https://tychee.store",
-  keywords = "Stellar, Soroban, Smart Contracts, Web3, Blockchain, Development Studio, Tychee",
+  keywords = "PCI-DSS, CoFT, Card Tokenization, Stellar, Soroban, Smart Contracts, Web3, Blockchain, SDK, Tychee",
   image = "https://tychee.store/open_graph.jpeg",
   author = "Tychee Labs",
   robots = "index, follow",

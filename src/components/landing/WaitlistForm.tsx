@@ -126,7 +126,7 @@ export default function WaitlistForm() {
             viewport={{ once: true }}
             className="text-muted-foreground text-lg mb-10 max-w-lg mx-auto"
           >
-            Join the waitlist and get early access to Stellar Soroban Studio before the public launch.
+            Join the waitlist and get your dedicated early usage access.
           </motion.p>
 
           {/* Form / Success state */}
